@@ -1,0 +1,30 @@
+teleop_twist_joy_node:
+  ros__parameters:
+    axis_linear:
+      x: 1
+    scale_linear:
+      x: 0.2
+    scale_linear_turbo:
+      x: 0.5
+
+    axis_angular:
+      yaw: 0
+    scale_angular:
+      yaw: 0.1
+
+    enable_button: 5
+    enable_turbo_button: 4
+
+
+# 0   L3 LEFT RIGHT AXIS    
+# 1   L1 FRONT BACK AXIS
+# 2   TRIANGLE BUTTON
+# 3   SQUARE BUTTON  
+# 4   L1 BUTTON     
+# 5   R1 BUTTON    
+# 6   L2 BUTTON/AXIS 
+# 7   R2 BUTTON/AXIS     
+# 8   SHARE BUTTON 
+# 9   OPTIONS BUTTON
+# 10  PS4 LOGO BUTTON 
+# 11     
