@@ -9,8 +9,6 @@ from ament_index_python.packages import get_package_share_directory
 def generate_launch_description():
 
 
-    rosbot_description_dir = get_package_share_directory('rosbot_description')
-
     rosbot_description = get_package_share_directory('multi_robot_rosbot')
     return LaunchDescription([
         IncludeLaunchDescription(
@@ -31,7 +29,7 @@ def generate_launch_description():
             arguments=['0', '0', '0', '0', '0', '0', 'map', 'rosbot1_map'],
             # arguments=['0', '0', '0', '0', '0', '3.1415926535', 'map', 'rosbot1/odom'],
             parameters=[
-        		rosbot_description_dir + '/config/static_tf.yaml'
+        		rosbot_description + '/config/static_tf.yaml'
         	],
         ),
 
@@ -43,7 +41,7 @@ def generate_launch_description():
             arguments=['0', '0', '0', '0', '0', '0', 'map', 'rosbot2_map'],
             # arguments=['0', '0', '0', '0', '0', '3.1415926535', 'map', 'rosbot1/odom'],
             parameters=[
-        		rosbot_description_dir + '/config/static_tf.yaml'
+        		rosbot_description + '/config/static_tf.yaml'
         	],
         ),
 
