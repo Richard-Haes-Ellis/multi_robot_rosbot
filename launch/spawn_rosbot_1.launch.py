@@ -8,12 +8,11 @@ import launch
   
 def generate_launch_description():
 
-    rosbot_description_dir = get_package_share_directory('rosbot_description')
     proyecto_rosbot_dir = get_package_share_directory('multi_robot_rosbot')
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
 
-    urdf_path = os.path.join(rosbot_description_dir, 'urdf', 'rosbot.urdf')
+    urdf_path = os.path.join(proyecto_rosbot_dir, 'urdf', 'rosbot.urdf')
 
     return LaunchDescription([
 
@@ -26,7 +25,7 @@ def generate_launch_description():
             arguments=['0', '0', '0', '3.1415926535', '0', '0', 'rosbot1_map', 'rosbot1/odom'],
             # arguments=['0', '0', '0', '0', '0', '3.1415926535', 'map', 'rosbot1/odom'],
             parameters=[
-        		rosbot_description_dir + '/config/static_tf.yaml'
+        		proyecto_rosbot_dir + '/config/static_tf.yaml'
         	],
         ),
 
