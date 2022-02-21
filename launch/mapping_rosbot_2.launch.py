@@ -5,7 +5,6 @@ from launch.actions import DeclareLaunchArgument
 
 def generate_launch_description():
 
-    rosbot_description_dir = get_package_share_directory('rosbot_description')
     proyecto_rosbot_dir = get_package_share_directory('multi_robot_rosbot')
 
 

@@ -10,7 +10,7 @@ from nav2_common.launch import RewrittenYaml
 
 
 def generate_launch_description():
-    proyecto_rosbot = get_package_share_directory('proyecto_rosbot')
+    proyecto_rosbot = get_package_share_directory('multi-robot-rosbot')
     use_sim_time = launch.substitutions.LaunchConfiguration('use_sim_time',
                                                             default='true')
     autostart = launch.substitutions.LaunchConfiguration('autostart')
