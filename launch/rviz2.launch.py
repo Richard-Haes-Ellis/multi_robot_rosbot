@@ -6,9 +6,8 @@ import os
   
 def generate_launch_description():
 
-    rosbot_description_dir = get_package_share_directory('rosbot_description')
     proyecto_rosbot_dir = get_package_share_directory('multi_robot_rosbot')
-    urdf_path = os.path.join(rosbot_description_dir, 'urdf', 'rosbot.urdf')
+    urdf_path = os.path.join(proyecto_rosbot_dir, 'urdf', 'rosbot.urdf')
 
     return LaunchDescription([
 
