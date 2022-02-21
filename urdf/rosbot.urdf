@@ -37,7 +37,7 @@
   <gazebo reference="top">
     <material>Gazebo/Red</material>
   </gazebo>
-  <gazebo reference="laser_link">
+  <gazebo reference="laser">
     <material>Gazebo/Black</material>
   </gazebo>
   <gazebo reference="camera_link">
@@ -504,14 +504,11 @@
     </transmission>
 
   </macro-->
-  <!-- <link name="dummy"/>
-  
+  <!--<link name="dummy"/>
   <joint name="dummy_joint" type="fixed">
     <parent link="dummy"/>
     <child link="base_link"/>
   </joint> -->
-
-
   <link name="base_link">
     <pose>0 0 0.1 0 0 0</pose>
     <inertial>
