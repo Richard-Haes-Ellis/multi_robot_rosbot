@@ -63,7 +63,7 @@ Visualization Manager:
     - Alpha: 1
       Class: rviz_default_plugins/RobotModel
       Collision Enabled: false
-      Description File: /home/adren/ros2_workspace/src/multi-robot-rosbot/urdf/rosbot.urdf
+      Description File: /home/richard/ros2_ws/src/multi-robot-rosbot/urdf/rosbot.urdf
       Description Source: File
       Description Topic:
         Depth: 5
@@ -150,7 +150,7 @@ Visualization Manager:
     - Alpha: 1
       Class: rviz_default_plugins/RobotModel
       Collision Enabled: false
-      Description File: /home/adren/ros2_workspace/src/multi-robot-rosbot/urdf/rosbot.urdf
+      Description File: /home/richard/ros2_ws/src/multi-robot-rosbot/urdf/rosbot.urdf
       Description Source: File
       Description Topic:
         Depth: 5
