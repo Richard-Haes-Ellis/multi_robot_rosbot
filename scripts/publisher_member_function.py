@@ -1,62 +1,33 @@
-# Copyright 2016 Open Source Robotics Foundation, Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
+#!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
-from geometry_msgs.msg import PoseStamped # Pose with ref frame and timestamp
+
 from std_msgs.msg import String
-import time
-
-
 
 
 class MinimalPublisher(Node):
 
     def __init__(self):
         super().__init__('minimal_publisher')
-        self.publisher_ = self.create_publisher(PoseStamped, 'goal_pose', 10)
+        self.publisher_ = self.create_publisher(String, 'topic', 10)
+        timer_period = 0.5  # seconds
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.i = 0
 
-        self.goal_pose = PoseStamped()
-        self.goal_pose.header.frame_id = 'map'
-        self.goal_pose.header.stamp = self.get_clock().now().to_msg()
-        self.goal_pose.pose.position.x = 10.0
-        self.goal_pose.pose.position.y = -2.0
-        self.goal_pose.pose.position.z = 0.0
-        self.goal_pose.pose.orientation.x = 0.0
-        self.goal_pose.pose.orientation.y = 0.0
-        self.goal_pose.pose.orientation.z = 0.0
-        self.goal_pose.pose.orientation.w = 1.0
-
-
-
-
-
-
-    def pub(self):
-        self.publisher_.publish(self.goal_pose)
-
+    def timer_callback(self):
+        msg = String()
+        msg.data = 'Hello World: %d' % self.i
+        self.publisher_.publish(msg)
+        self.get_logger().info('Publishing: "%s"' % msg.data)
+        self.i += 1
 
 
 def main(args=None):
     rclpy.init(args=args)
 
     minimal_publisher = MinimalPublisher()
-    minimal_publisher.pub()
-    # while(True):
-    #     minimal_publisher.pub()
-    #     time.sleep(2)
-    #rclpy.spin(minimal_publisher)
+
+    rclpy.spin(minimal_publisher)
 
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
