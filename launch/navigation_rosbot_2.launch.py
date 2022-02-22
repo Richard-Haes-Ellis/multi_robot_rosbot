@@ -10,7 +10,7 @@ from nav2_common.launch import RewrittenYaml
 
 
 def generate_launch_description():
-    proyecto_rosbot = get_package_share_directory('multi-robot-rosbot')
+    proyecto_rosbot = get_package_share_directory('multi_robot_rosbot')
     use_sim_time = launch.substitutions.LaunchConfiguration('use_sim_time',
                                                             default='true')
     autostart = launch.substitutions.LaunchConfiguration('autostart')
@@ -96,18 +96,18 @@ def generate_launch_description():
             output='screen',
             namespace = 'rosbot2',
             parameters=[{'use_sim_time': use_sim_time,
-            ],
+            }],
             remappings=remappings),
 
-        launch_ros.actions.Node(
-            package='nav2_bt_navigator',
-            executable='bt_navigator',
-            name='bt_navigator',
-            output='screen',
-            namespace = 'rosbot2',
-            parameters=[configured_params,
-            ],
-            remappings=remappings),
+        # launch_ros.actions.Node(
+        #     package='nav2_bt_navigator',
+        #     executable='bt_navigator',
+        #     name='bt_navigator',
+        #     output='screen',
+        #     namespace = 'rosbot2',
+        #     parameters=[configured_params,
+        #     ],
+        #     remappings=remappings),
 
         launch_ros.actions.Node(
             package='nav2_waypoint_follower',

@@ -56,4 +56,8 @@ def generate_launch_description():
             PythonLaunchDescriptionSource([rosbot_description, '/launch/ps4_sim.launch.py']),
         ),
         
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource([rosbot_description, '/launch/rviz2.launch.py']),
+        ),
+        
     ])
