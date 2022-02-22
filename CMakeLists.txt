@@ -99,6 +99,7 @@ install(DIRECTORY
 # Install Python executables
 install(PROGRAMS
   scripts/publisher_member_function.py
+  scripts/goal_publisher.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
