@@ -28,6 +28,9 @@ find_package(map_msgs REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(Boost REQUIRED COMPONENTS thread)
 
+find_package(ament_cmake_python REQUIRED)
+find_package(rclpy REQUIRED)
+
 # OpenCV is required for merging without initial positions
 find_package(OpenCV REQUIRED)
 if("${OpenCV_VERSION}" VERSION_LESS "3.0")
@@ -91,6 +94,12 @@ install(DIRECTORY
   urdf 
   rviz
   DESTINATION share/${PROJECT_NAME}
+)
+
+# Install Python executables
+install(PROGRAMS
+  scripts/publisher_member_function.py
+  DESTINATION lib/${PROJECT_NAME}
 )
 
 ament_export_include_directories(include)
