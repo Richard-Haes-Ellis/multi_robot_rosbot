@@ -22,10 +22,10 @@ def generate_launch_description():
             package='tf2_ros',
             executable='static_transform_publisher',
             output='screen',
-            arguments=['0', '0', '0', '3.1415926535', '0', '0', 'rosbot1_map', 'rosbot1/odom'],
+            arguments=['0', '0', '0', '3.1415926535', '0', '0', 'rosbot1/map', 'rosbot1/odom'],
             # arguments=['0', '0', '0', '0', '0', '3.1415926535', 'map', 'rosbot1/odom'],
             parameters=[
-        		proyecto_rosbot_dir + '/config/static_tf.yaml'
+        		proyecto_rosbot_dir + '/config/static_tf_sim.yaml'
         	],
         ),
 

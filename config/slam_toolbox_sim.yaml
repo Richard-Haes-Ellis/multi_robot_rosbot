@@ -11,7 +11,7 @@ slam_toolbox_rosbot1:
 
     # ROS Parameters
     odom_frame: rosbot1/odom
-    map_frame: rosbot1_map
+    map_frame: rosbot1/map
     base_frame: rosbot1/base_link
     scan_topic: /rosbot1/rp_lidar/out
 
@@ -80,7 +80,7 @@ slam_toolbox_rosbot2:
 
     # ROS Parameters
     odom_frame: rosbot2/odom
-    map_frame: rosbot2_map
+    map_frame: rosbot2/map
     base_frame: rosbot2/base_link
     scan_topic: /rosbot2/rp_lidar/out
 
