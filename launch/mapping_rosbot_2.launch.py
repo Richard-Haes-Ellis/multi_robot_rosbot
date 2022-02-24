@@ -23,10 +23,15 @@ def generate_launch_description():
             package='slam_toolbox',
             executable='sync_slam_toolbox_node',
             name='slam_toolbox_rosbot2',
-    
+            # namespace='rosbot2', # No funciona en slam_toolbox
             remappings=[
             ('/scan', '/rosbot2/rp_lidar/out'),
             ('/map', '/rosbot2/map'),
+            ('/slam_toolbox/feedback', '/rosbot2/slam_toolbox/feedback'),
+            ('/slam_toolbox/update', '/rosbot2/slam_toolbox/update'),
+            ('/slam_toolbox/scan_visualization', '/rosbot2/slam_toolbox/scan_visualization'),
+            ('/slam_toolbox/graph_visualization', '/rosbot2/slam_toolbox/graph_visualization'),
+            # ('/nav_msgs/msg/MapMetaData', '/rosbot2/nav_msgs/msg/MapMetaData'),
             ],
             output='screen'
         ),
