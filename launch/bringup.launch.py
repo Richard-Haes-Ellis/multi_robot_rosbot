@@ -26,7 +26,9 @@ def generate_launch_description():
             package='tf2_ros',
             executable='static_transform_publisher',
             output='screen',
-            arguments=['0', '0', '0', '0', '0', '0', 'map', 'rosbot1_map'],
+            namespace='rosbot1',
+            name='static_transform_publisher_map2rosbotmap',
+            arguments=['0', '0', '0', '0', '0', '0', 'map', 'rosbot1/map'],
             # arguments=['0', '0', '0', '0', '0', '3.1415926535', 'map', 'rosbot1/odom'],
             parameters=[
         		rosbot_description + '/config/static_tf.yaml'
@@ -38,7 +40,9 @@ def generate_launch_description():
             package='tf2_ros',
             executable='static_transform_publisher',
             output='screen',
-            arguments=['0', '0', '0', '0', '0', '0', 'map', 'rosbot2_map'],
+            namespace='rosbot2',
+            name='static_transform_publisher_map2rosbotmap',
+            arguments=['0', '0', '0', '0', '0', '0', 'map', 'rosbot2/map'],
             # arguments=['0', '0', '0', '0', '0', '3.1415926535', 'map', 'rosbot1/odom'],
             parameters=[
         		rosbot_description + '/config/static_tf.yaml'
@@ -56,8 +60,8 @@ def generate_launch_description():
             PythonLaunchDescriptionSource([rosbot_description, '/launch/ps4_sim.launch.py']),
         ),
         
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([rosbot_description, '/launch/rviz2.launch.py']),
-        ),
+        # IncludeLaunchDescription(
+        #     PythonLaunchDescriptionSource([rosbot_description, '/launch/rviz2.launch.py']),
+        # ),
         
     ])
