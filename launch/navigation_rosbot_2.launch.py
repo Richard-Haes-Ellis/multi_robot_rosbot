@@ -11,6 +11,8 @@ from nav2_common.launch import RewrittenYaml
 
 def generate_launch_description():
     proyecto_rosbot = get_package_share_directory('multi_robot_rosbot')
+    proyecto_nav2_bt_navigator = get_package_share_directory('nav2_bt_navigator')
+    
     use_sim_time = launch.substitutions.LaunchConfiguration('use_sim_time',
                                                             default='true')
     autostart = launch.substitutions.LaunchConfiguration('autostart')
@@ -18,13 +20,6 @@ def generate_launch_description():
     default_bt_xml_filename = launch.substitutions.LaunchConfiguration(
         'default_bt_xml_filename')
 
-    remappings=[   
-            ('/scan', '/rosbot2/rp_lidar/out'),
-            ('/map', '/rosbot2/map'),
-            ('/base_link', '/rosbot2/base_link'),
-            ('/odom', '/rosbot2/odom'),
-            ('/cmd_vel', 'rosbot2/cmd_vel'),
-            ]
 
     # Create our own temporary YAML files that include substitutions
     param_substitutions = {
@@ -43,13 +38,22 @@ def generate_launch_description():
         source_file=params_file,
         param_rewrites=param_substitutions,
         convert_types=True)
+    
+    config = os.path.join(
+        get_package_share_directory('multi_robot_rosbot'),
+        'config',
+        'nav2_params_sim_rosbot2.yaml'
+        )
+    
 
     return LaunchDescription([
+        
+        
         # Set env var to print messages to stdout immediately
         SetEnvironmentVariable('RCUTILS_LOGGING_BUFFERED_STREAM', '1'),
 
         launch.actions.DeclareLaunchArgument(
-            'use_sim_time', default_value='false',
+            'use_sim_time', default_value='true',
             description='Use simulation (Gazebo) clock if true'),
 
         launch.actions.DeclareLaunchArgument(
@@ -59,7 +63,7 @@ def generate_launch_description():
         launch.actions.DeclareLaunchArgument(
             'params',
             default_value=[proyecto_rosbot,
-                           '/config/nav2_params_sim_rosbot2.yaml'], #/config/nav2_params_sim_rosbot1.yaml
+                           '/config/nav2_params_sim_rosbot1.yaml'], #/config/nav2_params_sim_rosbot1.yaml
             description='Full path to the ROS2 parameters file to use'),
 
         DeclareLaunchArgument(
@@ -69,25 +73,25 @@ def generate_launch_description():
                 'behavior_trees', 'navigate_w_replanning_and_recovery.xml'),
             description='Full path to the behavior tree xml file to use'),
 
-        launch_ros.actions.Node(
+        # Nombre del nodo acaba siendo namespace.name
+
+        launch_ros.actions.Node(        
             package='nav2_controller',
             executable='controller_server',
+            name='controller_server',
             output='screen',
-            namespace = 'rosbot2',
-            parameters=[configured_params,
-            ],
-            remappings=remappings),
+            namespace = 'rosbot2', 
+            parameters=[config]
+            ),
 
         launch_ros.actions.Node(
             package='nav2_planner',
             executable='planner_server',
             name='planner_server',
             output='screen',
-            namespace = 'rosbot2',
-            parameters=[configured_params,
-            ],
-            remappings=remappings),
-
+            namespace = 'rosbot2',  
+            parameters=[config]
+            ),
 
         launch_ros.actions.Node(
             package='nav2_recoveries',
@@ -95,19 +99,18 @@ def generate_launch_description():
             name='recoveries_server',
             output='screen',
             namespace = 'rosbot2',
-            parameters=[{'use_sim_time': use_sim_time,
-            }],
-            remappings=remappings),
+            parameters=[config],
+            ),
 
-        # launch_ros.actions.Node(
-        #     package='nav2_bt_navigator',
-        #     executable='bt_navigator',
-        #     name='bt_navigator',
-        #     output='screen',
-        #     namespace = 'rosbot2',
-        #     parameters=[configured_params,
-        #     ],
-        #     remappings=remappings),
+        launch_ros.actions.Node(
+            package='nav2_bt_navigator',
+            executable='bt_navigator',
+            name='bt_navigator',
+            output='screen',
+            namespace = 'rosbot2',
+            parameters=[config,
+                        {'default_bt_xml_filename', default_bt_xml_filename}],
+            ),
 
         launch_ros.actions.Node(
             package='nav2_waypoint_follower',
@@ -115,20 +118,18 @@ def generate_launch_description():
             name='waypoint_follower',
             output='screen',
             namespace = 'rosbot2',
-            parameters=[configured_params,
-           ],
-            remappings=remappings),
+            parameters=[config],
+            ),
 
         launch_ros.actions.Node(
             package='nav2_lifecycle_manager',
             executable='lifecycle_manager',
             name='lifecycle_manager_navigation',
-            namespace = 'rosbot2',
-            remappings=remappings, #incluido despues
             output='screen',
+            namespace = 'rosbot2', 
             parameters=[{'use_sim_time': use_sim_time},
                         {'autostart': autostart},
-                        {'node_names': lifecycle_nodes},                       
+                        {'node_names': lifecycle_nodes},
             ]),
 
     ])

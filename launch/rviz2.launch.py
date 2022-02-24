@@ -14,8 +14,20 @@ def generate_launch_description():
         launch_ros.actions.Node(
             package='rviz2',
             executable='rviz2',
-            name="rviz2",
-            arguments=['-d', proyecto_rosbot_dir+"/rviz/mi_configuracion.rviz"],
+            name="rviz2_1",
+            arguments=['-d', proyecto_rosbot_dir+"/rviz/robot1.rviz"],
+            remappings=[
+            ('/goal_pose', '/rosbot1/goal_pose'),],
+            output="log"
+        ),
+        
+        launch_ros.actions.Node(
+            package='rviz2',
+            executable='rviz2',
+            name="rviz2_2",
+            remappings=[
+            ('/goal_pose', '/rosbot2/goal_pose'),],
+            arguments=['-d', proyecto_rosbot_dir+"/rviz/robot2.rviz"],
             output="log"
         ),
     ])
