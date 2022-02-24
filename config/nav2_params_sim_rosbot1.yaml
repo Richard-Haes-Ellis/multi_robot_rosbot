@@ -5,7 +5,7 @@
         global_frame: rosbot1/map           # SI
         robot_base_frame: rosbot1/base_link # SI
         odom_topic: rosbot1/odom            # SI
-        enable_groot_monitoring: True       # SI
+        enable_groot_monitoring: False       # SI
         groot_zmq_publisher_port: 1666      # SI
         groot_zmq_server_port: 1667         # SI
         default_bt_xml_filename: /home/richard/ros2_ws/install/nav2_bt_navigator/share/nav2_bt_navigator/behavior_trees/navigate_w_replanning_and_recovery.xml # SI
@@ -221,8 +221,8 @@
 # Lo pilla a medias
 /rosbot1/recoveries_server:
     ros__parameters:
-      costmap_topic: local_costmap/costmap_raw            # SI
-      footprint_topic: local_costmap/published_footprint  # SI
+      costmap_topic: /rosbot1/local_costmap/costmap_raw            # SI
+      footprint_topic: /rosbot1/local_costmap/published_footprint  # SI
       cycle_frequency: 10.0                               # SI
       recovery_plugins: ["spin", "backup", "wait"]        # SI
       spin:                                   # NO APARECE
