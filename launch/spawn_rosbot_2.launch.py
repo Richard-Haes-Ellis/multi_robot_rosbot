@@ -22,6 +22,8 @@ def generate_launch_description():
             package='tf2_ros',
             executable='static_transform_publisher',
             output='screen',
+            namespace='rosbot2',
+            name='static_transform_publisher_map2odom',
             arguments=['0', '0', '0', '3.1415926535', '0', '0', 'rosbot2/map', 'rosbot2/odom'],
             # arguments=['0', '0', '0', '0', '0', '3.1415926535', 'map', 'rosbot2/odom'],
             parameters=[
@@ -52,7 +54,7 @@ def generate_launch_description():
             package='robot_state_publisher',
             executable='robot_state_publisher',
             namespace='rosbot2',    # Creo recordar que no hace absolutamente nada :)
-            name='robot_state_publisher_1',
+            name='robot_state_publisher',
             output='screen',
             parameters=[{'use_sim_time': use_sim_time,
                 'frame_prefix':'rosbot2/',  # MARAVIALLA DEL SIGLO, nos renombra los tfs con este prefijo
