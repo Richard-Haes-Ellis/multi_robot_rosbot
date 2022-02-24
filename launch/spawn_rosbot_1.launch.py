@@ -13,6 +13,9 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
 
     urdf_path = os.path.join(proyecto_rosbot_dir, 'urdf', 'rosbot.urdf')
+    
+    with open(urdf_path, 'r') as infp:
+        robot_description = infp.read()
 
     return LaunchDescription([
 
@@ -58,7 +61,7 @@ def generate_launch_description():
             output='screen',
             parameters=[{'use_sim_time': use_sim_time,
                 'frame_prefix':'rosbot1/',  # MARAVIALLA DEL SIGLO, nos renombra los tfs con este prefijo
-                # 'robot_description':Command(['xacro',' ', xacro_path, ' robot_namespace:=','rosbot1']) # Pasaaaaaaaaaando
+                'robot_description':robot_description
                 }],
             arguments=[urdf_path]),
 
