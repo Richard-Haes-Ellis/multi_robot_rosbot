@@ -1,37 +1,37 @@
-# Lo pilla bien todo
+# [IMPORTANT] Resulting node name plus namespace
 /rosbot1/bt_navigator:
       ros__parameters:
-        use_sim_time: True                  # SI
-        global_frame: rosbot1/map           # SI
-        robot_base_frame: rosbot1/base_link # SI
-        odom_topic: rosbot1/odom            # SI
-        enable_groot_monitoring: False       # SI
-        groot_zmq_publisher_port: 1666      # SI
-        groot_zmq_server_port: 1667         # SI
-        default_bt_xml_filename: /home/richard/ros2_ws/install/nav2_bt_navigator/share/nav2_bt_navigator/behavior_trees/navigate_w_replanning_and_recovery.xml # SI
+        use_sim_time: True                  
+        global_frame: rosbot1/map           
+        robot_base_frame: rosbot1/base_link 
+        odom_topic: rosbot1/odom            
+        enable_groot_monitoring: False       
+        groot_zmq_publisher_port: 1666      
+        groot_zmq_server_port: 1667         
+        default_bt_xml_filename: /home/richard/ros2_ws/install/nav2_bt_navigator/share/nav2_bt_navigator/behavior_trees/navigate_w_replanning_and_recovery.xml 
         plugin_lib_names:
-        - nav2_compute_path_to_pose_action_bt_node      # SI
-        - nav2_follow_path_action_bt_node               # SI
-        - nav2_back_up_action_bt_node                   # SI
-        - nav2_spin_action_bt_node                      # SI
-        - nav2_wait_action_bt_node                      # SI
-        - nav2_clear_costmap_service_bt_node            # SI
-        - nav2_is_stuck_condition_bt_node               # SI
-        - nav2_goal_reached_condition_bt_node           # SI
-        - nav2_goal_updated_condition_bt_node           # SI
-        - nav2_initial_pose_received_condition_bt_node  # SI
-        - nav2_reinitialize_global_localization_service_bt_node # SI
-        - nav2_rate_controller_bt_node                  # SI
-        - nav2_distance_controller_bt_node              # SI
-        - nav2_speed_controller_bt_node                 # SI
-        - nav2_truncate_path_action_bt_node             # SI
-        - nav2_goal_updater_node_bt_node                # SI
-        - nav2_recovery_node_bt_node                    # SI
-        - nav2_pipeline_sequence_bt_node                # SI
-        - nav2_round_robin_node_bt_node                 # SI
-        - nav2_transform_available_condition_bt_node    # SI
-        - nav2_time_expired_condition_bt_node           # SI
-        - nav2_distance_traveled_condition_bt_node      # SI
+        - nav2_compute_path_to_pose_action_bt_node      
+        - nav2_follow_path_action_bt_node               
+        - nav2_back_up_action_bt_node                   
+        - nav2_spin_action_bt_node                      
+        - nav2_wait_action_bt_node                      
+        - nav2_clear_costmap_service_bt_node            
+        - nav2_is_stuck_condition_bt_node               
+        - nav2_goal_reached_condition_bt_node           
+        - nav2_goal_updated_condition_bt_node           
+        - nav2_initial_pose_received_condition_bt_node  
+        - nav2_reinitialize_global_localization_service_bt_node 
+        - nav2_rate_controller_bt_node                  
+        - nav2_distance_controller_bt_node              
+        - nav2_speed_controller_bt_node                 
+        - nav2_truncate_path_action_bt_node             
+        - nav2_goal_updater_node_bt_node                
+        - nav2_recovery_node_bt_node                    
+        - nav2_pipeline_sequence_bt_node                
+        - nav2_round_robin_node_bt_node                 
+        - nav2_transform_available_condition_bt_node    
+        - nav2_time_expired_condition_bt_node           
+        - nav2_distance_traveled_condition_bt_node      
 
 /rosbot1/bt_navigator_rclcpp_node:
     ros__parameters:
@@ -157,38 +157,38 @@
       ros__parameters:
         use_sim_time: True
         
-# Mas o menos lo coge tambien
+
 /rosbot1/global_costmap:
   global_costmap:
       ros__parameters:
-        update_frequency: 1.0               # SI
-        publish_frequency: 1.0              # SI
-        global_frame: rosbot1/map           # SI
-        robot_base_frame: rosbot1/base_link # SI
-        use_sim_time: True                  # SI
-        footprint: '[[0.14, 0.16], [0.14, -0.16], [-0.14, -0.16], [-0.14, 0.16]]' # SI
-        resolution: 0.05                    # SI
-        track_unknown_space: true           # SI
-        plugins: ["static_layer", "obstacle_layer", "inflation_layer"] # SI
-        obstacle_layer:                                 # NO APARECE
-          plugin: "nav2_costmap_2d::ObstacleLayer"      # NO APARECE
-          enabled: True                                 # NO APARECE
-          observation_sources: scan                     # NO APARECE
-          scan:                                         # NO APARECE
-            topic: /rosbot1/rp_lidar/out                # NO APARECE
-            max_obstacle_height: 2.0                    # NO APARECE
-            clearing: True                              # NO APARECE
-            marking: True                               # NO APARECE
-            data_type: "LaserScan"                      # NO APARECE
-            raytrace_max_range: 2.5                     # NO APARECE
-            raytrace_min_range: 0.0                     # NO APARECE
-            obstacle_max_range: 2.0                     # NO APARECE
-            obstacle_min_range: 0.0                     # NO APARECE
-        inflation_layer:                                # NO APARECE
-          plugin: "nav2_costmap_2d::InflationLayer"     # NO APARECE
-          cost_scaling_factor: 3.0                      # NO APARECE
-          inflation_radius: 0.55                        # NO APARECE
-        always_send_full_costmap: True    # SI
+        update_frequency: 1.0               
+        publish_frequency: 1.0              
+        global_frame: rosbot1/map           
+        robot_base_frame: rosbot1/base_link 
+        use_sim_time: True                  
+        footprint: '[[0.14, 0.16], [0.14, -0.16], [-0.14, -0.16], [-0.14, 0.16]]' 
+        resolution: 0.05                    
+        track_unknown_space: true           
+        plugins: ["static_layer", "obstacle_layer", "inflation_layer"] 
+        obstacle_layer:                                 
+          plugin: "nav2_costmap_2d::ObstacleLayer"      
+          enabled: True                                 
+          observation_sources: scan                     
+          scan:                                         
+            topic: /rosbot1/rp_lidar/out                
+            max_obstacle_height: 2.0                    
+            clearing: True                              
+            marking: True                               
+            data_type: "LaserScan"                      
+            raytrace_max_range: 2.5                     
+            raytrace_min_range: 0.0                     
+            obstacle_max_range: 2.0                     
+            obstacle_min_range: 0.0                     
+        inflation_layer:                                
+          plugin: "nav2_costmap_2d::InflationLayer"     
+          cost_scaling_factor: 3.0                      
+          inflation_radius: 0.55                        
+        always_send_full_costmap: True    
 
 /rosbot1/global_costmap_client:
       ros__parameters:
@@ -202,12 +202,12 @@
 /rosbot1/planner_server:
     ros__parameters:
       use_sim_time: True
-      planner_plugins: ["GridBased"] # SI
+      planner_plugins: ["GridBased"] 
       GridBased:
-        plugin: "nav2_navfn_planner/NavfnPlanner" # NO APARECE
-        tolerance: 0.5                            # NO APARECE
-        use_astar: false                          # NO APARECE
-        allow_unknown: true          # SI
+        plugin: "nav2_navfn_planner/NavfnPlanner" 
+        tolerance: 0.5                            
+        use_astar: false                          
+        allow_unknown: true          
 
 /rosbot1/planner_server_rclcpp_node:
     ros__parameters:
@@ -221,24 +221,24 @@
 # Lo pilla a medias
 /rosbot1/recoveries_server:
     ros__parameters:
-      costmap_topic: /rosbot1/local_costmap/costmap_raw            # SI
-      footprint_topic: /rosbot1/local_costmap/published_footprint  # SI
-      cycle_frequency: 10.0                               # SI
-      recovery_plugins: ["spin", "backup", "wait"]        # SI
-      spin:                                   # NO APARECE
-        plugin: "nav2_recoveries/Spin"        # NO APARECE
-      backup:                                 # NO APARECE
-        plugin: "nav2_recoveries/BackUp"      # NO APARECE
-      wait:                                   # NO APARECE
-        plugin: "nav2_recoveries/Wait"        # NO APARECE
-      global_frame: rosbot1/odom            # SI
-      robot_base_frame: rosbot1/base_link   # SI
-      transform_timeout: 0.1                # NO APARECE
-      use_sim_time: True                    # SI
-      simulate_ahead_time: 2.0 # NO APARECE
-      max_rotational_vel: 1.0  # NO APARECE
-      min_rotational_vel: 0.4  # NO APARECE
-      rotational_acc_lim: 3.2  # NO APARECE
+      costmap_topic: /rosbot1/local_costmap/costmap_raw            
+      footprint_topic: /rosbot1/local_costmap/published_footprint  
+      cycle_frequency: 10.0                               
+      recovery_plugins: ["spin", "backup", "wait"]        
+      spin:                                   
+        plugin: "nav2_recoveries/Spin"        
+      backup:                                 
+        plugin: "nav2_recoveries/BackUp"      
+      wait:                                   
+        plugin: "nav2_recoveries/Wait"        
+      global_frame: rosbot1/odom            
+      robot_base_frame: rosbot1/base_link   
+      transform_timeout: 0.1                
+      use_sim_time: True                    
+      simulate_ahead_time: 2.0 
+      max_rotational_vel: 1.0  
+      min_rotational_vel: 0.4  
+      rotational_acc_lim: 3.2  
 
   
 /rosbot1/WaypointFollower:

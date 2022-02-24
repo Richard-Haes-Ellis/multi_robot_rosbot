@@ -72,17 +72,17 @@ def generate_launch_description():
                 get_package_share_directory('nav2_bt_navigator'),
                 'behavior_trees', 'navigate_w_replanning_and_recovery.xml'),
             description='Full path to the behavior tree xml file to use'),
+        
+        # Importante que los nombres de los parametros en el .yaml sean iguales al nombre de los nodos, 
+        # los nombres de los nodos acaban siendo namespace.name 
 
-        launch_ros.actions.Node(         #'frame_prefix':'rosbot1/', en principio no hace falta en parameters
+        launch_ros.actions.Node(         
             package='nav2_controller',
             executable='controller_server',
             name='controller_server',
             output='screen',
-            namespace = 'rosbot1',  # FUNCIONA NAMESPACES
-            # parameters=[proyecto_rosbot + "/config/nav/controller_server.yaml" 
+            namespace = 'rosbot1',  
             parameters=[config]
-            # parameters=[configured_params],
-            # remappings=remappings
             ),
 
         launch_ros.actions.Node(
@@ -90,11 +90,8 @@ def generate_launch_description():
             executable='planner_server',
             name='planner_server',
             output='screen',
-            namespace = 'rosbot1',  # FUNCIONA NAMESPACES
-            # parameters=[proyecto_rosbot + "/config/nav/planner_server.yaml"
+            namespace = 'rosbot1',  
             parameters=[config]
-            # parameters=[configured_params],
-            # remappings=remappings
             ),
 
         launch_ros.actions.Node(
@@ -102,10 +99,8 @@ def generate_launch_description():
             executable='recoveries_server',
             name='recoveries_server',
             output='screen',
-            namespace = 'rosbot1',  # FUNCIONA NAMESPACES
-            # parameters=[proyecto_rosbot + "/config/nav/recoveries_server.yaml" 
+            namespace = 'rosbot1',  
             parameters=[config],
-            # remappings=remappings
             ),
 
         launch_ros.actions.Node(
@@ -116,8 +111,6 @@ def generate_launch_description():
             namespace = 'rosbot1',
             parameters=[config,
                         {'default_bt_xml_filename', default_bt_xml_filename}],
-            # parameters=[proyecto_rosbot + "/config/nav2_params_sim_rosbot1.yaml",],
-            # remappings=remappings 
             ),
 
         launch_ros.actions.Node(
@@ -125,19 +118,16 @@ def generate_launch_description():
             executable='waypoint_follower',
             name='waypoint_follower',
             output='screen',
-            namespace = 'rosbot1', # FUNCIONA NAMESPACES
+            namespace = 'rosbot1', 
             parameters=[config],
-            # parameters=[configured_params],
-            # remappings=remappings
             ),
 
         launch_ros.actions.Node(
             package='nav2_lifecycle_manager',
             executable='lifecycle_manager',
             name='lifecycle_manager_navigation',
-            # remappings=remappings, #incluido despues
             output='screen',
-            namespace = 'rosbot1', # FUNCIONA NAMESPACES
+            namespace = 'rosbot1', 
             parameters=[{'use_sim_time': use_sim_time},
                         {'autostart': autostart},
                         {'node_names': lifecycle_nodes},
