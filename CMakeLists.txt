@@ -100,6 +100,7 @@ install(DIRECTORY
 install(PROGRAMS
   scripts/publisher_member_function.py
   scripts/goal_publisher.py
+  scripts/trayectoria_astar_modif.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
