@@ -20,7 +20,7 @@ slam_toolbox_rosbot1:
     transform_publish_period: 0.025 #if 0 never publishes odometry
     map_update_interval: 0.5
     resolution: 0.01
-    max_laser_range: 30.0 #for rastering images
+    max_laser_range: 24.0 #for rastering images
     minimum_time_interval: 0.01
     transform_timeout: 0.5
     tf_buffer_duration: 30.0
@@ -89,7 +89,7 @@ slam_toolbox_rosbot2:
     transform_publish_period: 0.025 #if 0 never publishes odometry
     map_update_interval: 0.5
     resolution: 0.01
-    max_laser_range: 30.0 #for rastering images
+    max_laser_range: 24.0 #for rastering images
     minimum_time_interval: 0.01
     transform_timeout: 0.5
     tf_buffer_duration: 30.0
