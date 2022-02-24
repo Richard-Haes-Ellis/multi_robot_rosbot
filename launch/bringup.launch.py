@@ -56,20 +56,16 @@ def generate_launch_description():
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource([rosbot_description, '/launch/mapping_rosbot_2.launch.py']),
         ),
+        # IncludeLaunchDescription(
+        #     PythonLaunchDescriptionSource([rosbot_description, '/launch/ps4_sim.launch.py']),
+        # ),
+        
         IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([rosbot_description, '/launch/ps4_sim.launch.py']),
+            PythonLaunchDescriptionSource([rosbot_description, '/launch/navigation_rosbot_1.launch.py']),
         ),
         
-        # IncludeLaunchDescription(
-        #     PythonLaunchDescriptionSource([rosbot_description, '/launch/navigation_rosbot_1.launch.py']),
-        # ),
-        
-        # IncludeLaunchDescription(
-        #     PythonLaunchDescriptionSource([rosbot_description, '/launch/navigation_rosbot_2.launch.py']),
-        # ),
-        
         IncludeLaunchDescription(
-            PythonLaunchDescriptionSource([rosbot_description, '/launch/rviz2.launch.py']),
+            PythonLaunchDescriptionSource([rosbot_description, '/launch/navigation_rosbot_2.launch.py']),
         ),
         
     ])
