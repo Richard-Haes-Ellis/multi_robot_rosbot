@@ -8,7 +8,12 @@ import launch
   
 def generate_launch_description():
 
-    world_file_name =  'willow_garage.world'
+    # world_file_name =  'willow_garage.world'
+    # world_file_name =  'solar2.world'
+    # world_file_name =  'solar2.world'
+    world_file_name =  'solar_simple.world'
+
+
 
     rosbot_description_dir = get_package_share_directory('rosbot_description')
 

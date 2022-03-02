@@ -49,7 +49,7 @@ def generate_launch_description():
             #   ya que esas son las que se usan para el calculo de la odometria y el plugin (mierda de plugin la verdad) no renombra los frames
             #   con el tag <robot_namespace>
             
-            arguments=['-spawn_service_timeout', '60','-robot_namespace','rosbot2', '-entity', 'rosbot2', '-x', '0', '-y', '1.25', '-z', '0.03', '-file', proyecto_rosbot_dir + '/models/rosbot2.sdf']),
+            arguments=['-spawn_service_timeout', '60','-robot_namespace','rosbot2', '-entity', 'rosbot2', '-x', '0', '-y', '2.0', '-z', '0.03', '-file', proyecto_rosbot_dir + '/models/rosbot2.sdf']),
 
         # Nodo que publica las transformadas estáticas de todo el robot
         # Es decir, nos define las tf's desde el base_link a todos nuestro elementos ESTATICOS (imu, laser, astra, sensores etc..)
