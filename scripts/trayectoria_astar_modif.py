@@ -69,7 +69,7 @@ class Planner(Node):
 		for j in range(dim_x):
 			for i in range(dim_y):
 				self.matriz_mapa [i][j] = self.map_data[j*dim_y + i]
-				if(self.matriz_mapa[i][j] > 50):
+				if(self.matriz_mapa[i][j] > 20):
 					self.matriz_mapa[i][j] = 1
 				else:
 					self.matriz_mapa[i][j] = 0
