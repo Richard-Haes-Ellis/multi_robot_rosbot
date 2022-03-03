@@ -61,20 +61,18 @@ class Planner(Node):
 		print("Origen del mapa en: ", [offset_x, offset_y])
 		print("Resolucion del mapa: ", self.map_resolution)
 
-	
-		gen_map = np.zeros((dim_x, dim_y))
 		print_list = []
 
 
-		matriz_mapa = np.zeros([dim_y, dim_x])
+		self.matriz_mapa = np.zeros([dim_y, dim_x])
   
 		for j in range(dim_x):
 			for i in range(dim_y):
-				matriz_mapa [i][j] = self.map_data[j*dim_y + i]
-				if(matriz_mapa[i][j] > 50):
-					matriz_mapa[i][j] = 1
+				self.matriz_mapa [i][j] = self.map_data[j*dim_y + i]
+				if(self.matriz_mapa[i][j] > 50):
+					self.matriz_mapa[i][j] = 1
 				else:
-					matriz_mapa[i][j] = 0
+					self.matriz_mapa[i][j] = 0
     
   
 	def update_vel(self, data):
@@ -152,7 +150,7 @@ class Planner(Node):
 
 			# Paso 4: compruebo si existe en alguna lista
 			for vecino in neighbors_list :		
-				if (gen_map[vecino[1],vecino[0]] == 0) :	#solo busco si la celda esta libre de obstaculos 
+				if (self.matriz_mapa[vecino[1],vecino[0]] == 0) :	#solo busco si la celda esta libre de obstaculos 
 					found = 0
 					for objeto in lista_abierta : #si esta en la abierta, actualizo gn y reordeno
 						if(objeto.x == vecino[1] and objeto.y == vecino[0]) :
@@ -220,7 +218,6 @@ class Planner(Node):
 		"""Moves the robot to the goal."""
 		
 		self.goal = data
-  
 		current_cell_x = math.trunc((self.pose.position.x - self.map_origin.position.x)/self.map_resolution) + math.trunc(self.map_origin.position.x/self.map_resolution) #odom respecto a la matriz de ocupacion (desplaz en celdas entre origen del mapa y robot)
 		current_cell_y = math.trunc((self.pose.position.y - self.map_origin.position.y)/self.map_resolution) + math.trunc(self.map_origin.position.y/self.map_resolution)
 
